@@ -14,10 +14,17 @@
 
 <script>
 import VoteChart from "./components/VoteChart";
-import { API, graphqlOperation } from "aws-amplify";
+import {Amplify, API, graphqlOperation } from "aws-amplify";
 import * as queries from "./graphql/queries";
 import * as mutations from "./graphql/mutations";
 import * as subscriptions from "./graphql/subscriptions";
+
+Amplify.configure({
+  aws_appsync_graphqlEndpoint: 'https://x53vqtsmlrcbvfxbsdgizfpk6a.appsync-api.ap-northeast-1.amazonaws.com/graphql',
+  aws_appsync_region: 'ap-northeast-1',
+  aws_appsync_authenticationType: 'API_KEY',
+  aws_appsync_apiKey: 'da2-oixabp3vinbkbjv43gvnfd35he'
+});
 
 export default {
   components: { VoteChart },
@@ -50,15 +57,17 @@ export default {
     }
   },
   mounted() {
-    API.graphql(graphqlOperation(subscriptions.onCastVote)).subscribe({
+    const subscription = API.graphql(
+      graphqlOperation(subscriptions.onCastVote)
+    ).subscribe({
       next: voteCasted => {
-        const id = voteCasted.value.data.onCastVote.id;
-        const votes = voteCasted.value.data.onCastVote.votes;
-        const candidates = this.candidates;
-        const candidate = candidates.find(candidate => candidate.id === id);
-        candidate.votes = votes;
-        this.candidates = candidates;
-      }
+                    const id = voteCasted.value.data.onCastVote.id;
+                    const votes = voteCasted.value.data.onCastVote.votes;
+                    const candidates = this.candidates;
+                    const candidate = candidates.find(candidate => candidate.id === id);
+                    candidate.votes = votes;
+                    this.candidates = candidates;
+                  }
     });
   }
 };
