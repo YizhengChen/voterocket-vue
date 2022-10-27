@@ -1,14 +1,15 @@
 {
-    "dev": {
-        "awscloudformation": {
-            "AuthRoleName": "voterocket-dev-20190719173634-authRole",
-            "UnauthRoleArn": "arn:aws:iam::366726621442:role/voterocket-dev-20190719173634-unauthRole",
-            "AuthRoleArn": "arn:aws:iam::366726621442:role/voterocket-dev-20190719173634-authRole",
-            "Region": "us-west-2",
-            "DeploymentBucketName": "voterocket-dev-20190719173634-deployment",
-            "UnauthRoleName": "voterocket-dev-20190719173634-unauthRole",
-            "StackName": "voterocket-dev-20190719173634",
-            "StackId": "arn:aws:cloudformation:us-west-2:366726621442:stack/voterocket-dev-20190719173634/f0070940-a9f7-11e9-a38d-061ed2887276"
-        }
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-voterocket-dev-101256-authRole",
+      "UnauthRoleArn": "arn:aws:iam::963212321671:role/amplify-voterocket-dev-101256-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::963212321671:role/amplify-voterocket-dev-101256-authRole",
+      "Region": "ap-northeast-1",
+      "DeploymentBucketName": "amplify-voterocket-dev-101256-deployment",
+      "UnauthRoleName": "amplify-voterocket-dev-101256-unauthRole",
+      "StackName": "amplify-voterocket-dev-101256",
+      "StackId": "arn:aws:cloudformation:ap-northeast-1:963212321671:stack/amplify-voterocket-dev-101256/e0e693a0-559c-11ed-b04b-06c969195bb9",
+      "AmplifyAppId": "d2aoluipyezax1"
     }
+  }
 }
