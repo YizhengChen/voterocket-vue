@@ -14,7 +14,7 @@
 
 <script>
 import VoteChart from "./components/VoteChart";
-import {Amplify, API, graphqlOperation } from "aws-amplify";
+import { API, graphqlOperation } from "aws-amplify";
 import * as queries from "./graphql/queries";
 import * as mutations from "./graphql/mutations";
 import * as subscriptions from "./graphql/subscriptions";
@@ -50,7 +50,7 @@ export default {
     }
   },
   mounted() {
-    const subscription = API.graphql(
+    API.graphql(
       graphqlOperation(subscriptions.onCastVote)
     ).subscribe({
       next: voteCasted => {
@@ -61,17 +61,6 @@ export default {
                     candidate.votes = votes;
                     this.candidates = candidates;
                   }
-    });
-
-    API.graphql(graphqlOperation(subscriptions.onCastVote)).subscribe({
-      next: voteCasted => {
-        const id = voteCasted.value.data.onCastVote.id;
-        const votes = voteCasted.value.data.onCastVote.votes;
-        const candidates = this.candidates;
-        const candidate = candidates.find(candidate => candidate.id === id);
-        candidate.votes = votes;
-        this.candidates = candidates;
-      }
     });
   }
 };
